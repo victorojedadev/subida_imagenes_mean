@@ -26,4 +26,16 @@ export class PhotoService {
     return this.http.get<Photo[]>(this.URI);
   }
 
+  getPhoto(id: string) {
+    return this.http.get<Photo>(this.URI + '/' + id);
+  }
+
+  deletePhoto(id: string){
+    return this.http.delete<Photo>(this.URI + '/' + id);
+  }
+
+  updatePhoto(id: string, title: string, description: string){
+    return this.http.put(this.URI + '/' + id, {title, description});
+  }
+
 }
