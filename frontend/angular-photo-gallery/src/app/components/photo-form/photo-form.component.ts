@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
@@ -15,10 +16,15 @@ export class PhotoFormComponent implements OnInit {
 
   file: File;
   photoSelected: string | ArrayBuffer;
+  @ViewChild('title', { static: false }) title;
+  @ViewChild('descripcion', { static: false }) description;
 
   constructor(
     private photoService: PhotoService,
-    private router: Router) { 
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private zone: NgZone
+  ) {
 
   }
 
@@ -33,20 +39,32 @@ export class PhotoFormComponent implements OnInit {
       reader.onload = (e) => this.photoSelected = reader.result
       reader.readAsDataURL(this.file);
 
-
-
     }
   }
 
   uploadPhoto(title: HTMLInputElement, description: HTMLInputElement): Boolean {
+    this.spinner.show();
     this.photoService.createPhoto(title.value, description.value, this.file)
       .subscribe(
         res => {
-          this.router.navigate['/fotos'];
+          this.spinner.hide();
+          this.resetForm();
+          this.zone.run(() => {
+            this.router.navigate(['/fotos']);
+          });
         },
-        err => console.log(err)
+        err => {
+          this.spinner.hide();
+          console.log(err)
+        }
       );
     return false;
+  }
+
+  resetForm() {
+    this.photoSelected = null;
+    this.title = '';
+    this.description = '';
   }
 
 }

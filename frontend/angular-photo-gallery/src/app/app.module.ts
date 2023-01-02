@@ -8,7 +8,8 @@ import { PhotoFormComponent } from './components/photo-form/photo-form.component
 import { PhotoPreviewComponent } from './components/photo-preview/photo-preview.component';
 import { PhotoListComponent } from './components/photo-list/photo-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PhotoService } from './services/photo.service';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { PhotoService } from './services/photo.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

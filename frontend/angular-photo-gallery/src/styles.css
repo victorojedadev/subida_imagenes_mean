@@ -1,1 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00695c;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  /* background: orange; */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #00695c;
+  border-radius: 20px;
+  border: 2px solid #e0f2f1;
+}
+
+.navbar {
+  padding: 0rem 1rem;
+}
+
+.bg-primary {
+  background-color: #00695c !important;
+}
+
+.btn-primary {
+  background: #00695c !important;
+}
+
+.btn-primary:hover {
+  background: #015349 !important;
+}
+
+.btn-danger {
+  background: #c62828 !important;
+}
+
+.btn-danger:hover {
+  background: #b32323 !important;
+}
+
+body {
+  background: #e0f2f1;
+}
+
+.card {
+  color: white;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  height: 260px;
+}
+
+.card-header {
+  background: #00695c;
+  padding: 10px;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.card-photo {
+  padding: 0 10px;
+  background: #1c695d;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+[type="text"].form-control:focus,
+input.form-control:focus {
+  box-shadow: inset 0 -2px 0 #1c695d;
+}
+
+[contenteditable].form-control:focus,
+[type="email"].form-control:focus,
+[type="password"].form-control:focus,
+[type="tel"].form-control:focus,
+[type="text"].form-control:focus,
+input.form-control:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+textarea.form-control:focus,
+textarea:focus {
+  box-shadow: inset 0 -2px 0 #1c695d;
+}

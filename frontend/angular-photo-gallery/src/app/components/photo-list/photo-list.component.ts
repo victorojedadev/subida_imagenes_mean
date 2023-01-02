@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-photo-list',
@@ -13,16 +14,22 @@ export class PhotoListComponent implements OnInit {
 
   constructor(
     private photoService: PhotoService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.photoService.getPhotos()
       .subscribe(
         res => {
           this.photos = res;
+          this.spinner.hide();
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.spinner.hide();
+        }
       );
   }
 

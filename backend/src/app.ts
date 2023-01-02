@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import indexRoutes from './routes/index'
 import path from 'path';
-import cors from 'cors';
+var cors = require('cors')
 
 const app = express();
 

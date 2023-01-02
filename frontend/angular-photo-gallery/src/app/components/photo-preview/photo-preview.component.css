@@ -1,0 +1,11 @@
+.center {
+  text-align: center;
+}
+
+.img-fluid {
+  height: 200px;
+}
+
+.buttons-container button {
+  width: 200px;
+}
